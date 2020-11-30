@@ -4,7 +4,6 @@
 
 - Responsive Web Design
 - Support PWA
--
 
 ## API used
 
