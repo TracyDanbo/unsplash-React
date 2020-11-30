@@ -1,0 +1,80 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  min-height: 20rem;
+  padding-top: 9rem;
+  overflow: hidden;
+}
+
+.box img {
+  border-radius: 50%;
+}
+.box p {
+  text-align: center;
+  line-height: 2rem;
+  padding-top: 1rem;
+  max-width: 80vw;
+}
+
+.box p:nth-child(1) {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.box p:nth-child(2) {
+  font-size: 1.3rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.navlinks {
+  z-index: 10;
+  position: sticky;
+  top: 9rem;
+  background: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navlinks svg {
+  fill: rgba(0, 0, 0, 0.5);
+  width: 24px;
+  height: 24px;
+  margin-right: 2rem;
+}
+
+.navlinks a {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 1rem 0;
+}
+
+.navlinks a.active {
+  color: lightcoral;
+}
+.navlinks a.active svg {
+  fill: lightcoral;
+}
+
+@media (width>1024px) {
+  .box p {
+    max-width: 50vw;
+  }
+  .navlinks {
+    top: 7rem;
+    justify-content: flex-end;
+  }
+
+  .navlinks a {
+    min-width: 15rem;
+    flex: unset;
+  }
+}

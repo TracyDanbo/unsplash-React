@@ -1,0 +1,142 @@
+.container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 3.2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.container.loading::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.15)
+  );
+  background-size: 400% 100%;
+  cursor: pointer;
+
+  animation: loading 1.2s ease infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.like,
+.download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+.like:hover,
+.download:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+.like {
+  top: 0;
+}
+.like.click svg {
+  animation: like 0.6s ease-in-out forwards;
+}
+@keyframes like {
+  0% {
+    fill: white;
+    transform: scale(1);
+  }
+  50% {
+    fill: red;
+    transform: scale(0.2);
+  }
+  100% {
+    fill: red;
+    transform: scale(1);
+  }
+}
+
+.download {
+  bottom: 0;
+}
+
+.spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
+.user:hover {
+  text-decoration: underline;
+}
+.profile,
+.profile img {
+  position: relative;
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.profile {
+  background: rgb(206, 206, 206);
+}
+
+.profile img {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.profile img.loaded {
+  opacity: 1;
+}
+.name {
+  color: white;
+  font-weight: 900;
+  padding-left: 1rem;
+}
+
+.photo,
+.photo img {
+  display: block;
+  width: 100%;
+  border-radius: 1rem;
+}
+.photo img {
+  opacity: 0;
+  filter: grayscale(100%);
+  transition: opactiy 0.6s ease-in-out, filter 0.6s ease-in-out 0.6s;
+}
+
+.photo img.load {
+  opacity: 1;
+  filter: grayscale(0%);
+}

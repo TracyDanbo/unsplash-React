@@ -1,0 +1,96 @@
+.tabBar {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  position: fixed;
+  top: 8.5rem;
+  left: 0;
+  width: 100vw;
+  background: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.tabBar.sticky {
+  transform: translateY(-100%);
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+}
+
+.navlinks a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  padding: 1rem;
+  color: rgba(0, 0, 0, 0.2);
+}
+.navlinks a svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 2rem;
+  fill: rgba(0, 0, 0, 0.2);
+}
+.navlinks a.active {
+  color: lightcoral;
+}
+.navlinks a.active svg {
+  fill: lightcoral;
+}
+
+.filter {
+  display: flex;
+  /* padding: 0 1rem; */
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.filter div {
+  max-width: 45vw;
+}
+
+.photosSection {
+  padding-top: 22rem;
+}
+.collectionsSection,
+.usersSection {
+  padding-top: 15rem;
+}
+
+@media (width > 1024px) {
+  .tabBar {
+    flex-direction: row;
+    justify-content: space-between;
+    top: 6rem;
+    z-index: 12;
+    padding: 0 1rem;
+    height: 7rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  .tabBar.tabBar.sticky {
+    z-index: 1;
+  }
+  .navlinks a {
+    min-width: 150px;
+  }
+
+  .filter {
+    padding: 0;
+  }
+  .filter div {
+    max-width: 200px;
+    margin: 0 2rem;
+  }
+
+  .photosSection {
+    padding-top: 16rem;
+  }
+  .collectionsSection,
+  .usersSection {
+    padding-top: 16rem;
+  }
+}

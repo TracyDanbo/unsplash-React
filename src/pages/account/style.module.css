@@ -1,0 +1,490 @@
+.loadingbar {
+  z-index: 100;
+  position: fixed;
+}
+.tabBar {
+  z-index: 2;
+  position: fixed;
+  top: 8rem;
+  width: 100%;
+  background: white;
+  padding-top: 2rem;
+  /* padding: 2rem 0; */
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navlinks svg {
+  fill: rgba(0, 0, 0, 0.5);
+  width: 24px;
+  height: 24px;
+  margin-right: 2rem;
+}
+
+.navlinks a {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 1rem 0;
+}
+
+.navlinks a.active {
+  color: lightcoral;
+}
+.navlinks a.active svg {
+  fill: lightcoral;
+}
+.tabBar + div {
+  padding-top: 16rem;
+}
+
+.sideBar {
+  display: none;
+  visibility: hidden;
+}
+
+.snippet {
+  overflow: hidden;
+  position: relative;
+  margin: 0.5rem 1rem 1.5rem 1rem;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.snippet h1 {
+  font-size: 2.5rem;
+  padding: 2rem;
+}
+
+/* profile */
+.profile::before {
+  content: '';
+  display: block;
+  margin-top: -15rem;
+  height: 15rem;
+  pointer-events: none;
+  visibility: hidden;
+}
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 2rem;
+}
+
+.row:nth-child(n + 2):active,
+.row:nth-child(n + 2):hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.row:nth-child(n + 2) {
+  height: 68px;
+}
+
+.row:first-child {
+  position: relative;
+  width: fit-content;
+  margin: 2rem calc((100% - 128px) / 2);
+  padding: 0;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.row:first-child::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.row:first-child svg {
+  position: absolute;
+  fill: rgba(255, 255, 255, 0.5);
+  width: 32px;
+  height: 32px;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%) translateY(50%);
+}
+
+.profile img {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+.filed {
+  font-weight: 500;
+  color: rgb(100, 99, 99);
+}
+.value {
+  font-weight: bold;
+  color: rgb(94, 91, 91);
+}
+
+.editfiled {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 2rem 2rem;
+  background: #efefef;
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.3s linear;
+}
+.editfiled.open {
+  opacity: 1;
+  z-index: 1;
+}
+
+.editfiled input {
+  width: 50%;
+  line-height: 2rem;
+  font-weight: bold;
+  color: rgb(94, 91, 91);
+  border: none;
+  background: inherit;
+  margin-right: auto;
+}
+
+.editfiled input::placeholder {
+  color: rgb(94, 91, 91);
+}
+
+.edit,
+.done,
+.cancel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 50%;
+  margin: 0 0.5rem;
+}
+
+.edit:active,
+.done:active,
+.cancel:active {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.done svg {
+  fill: green;
+}
+
+.cancel svg {
+  fill: red;
+}
+.edit {
+  margin: 0 1.5rem 0 auto;
+}
+/* security */
+.security {
+  padding: 0 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+}
+.security > div {
+  margin: 0 0.5rem 1.5rem 0.5rem;
+  max-width: 450px;
+}
+
+.commit {
+  align-self: flex-end;
+}
+/* .security input {
+  background: inherit;
+} */
+
+.waiting {
+  min-height: 340px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.waiting p {
+  margin: 2rem;
+}
+
+.logOut {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
+/* uploadPanel*/
+.uploadPanel {
+  z-index: 110;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* height: 100%; */
+  height: -webkit-fill-available;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  touch-action: none;
+}
+.uploadPanel h1 {
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+}
+.uploadPanel h1 svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+.uploaded {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.uploaded p {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 2rem;
+}
+
+.previewBox {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.input {
+  visibility: hidden;
+  display: none;
+}
+.actionbox {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2rem;
+  height: 8.5rem;
+}
+.actionbox > div {
+  margin: 0 2rem;
+}
+.photoPanel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .photoPanel::before {
+  z-index: -1;
+  content: '';
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: gold;
+} */
+.photoPanel img {
+  max-height: 400px;
+  pointer-events: none;
+  user-select: none;
+}
+.photoPanel > div:first-child {
+  position: relative;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.window {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+
+  cursor: move;
+  border: 1px solid black;
+  /* transition: all 0.1s linear; */
+}
+.resize {
+  z-index: 1;
+  position: absolute;
+  padding: 15px;
+
+  /* width: 10px;
+  height: 10px; */
+  /* border: 1px solid black; */
+  /* background: white; */
+}
+.resize::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  background: white;
+}
+.lt {
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  cursor: nw-resize;
+}
+.rt {
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  cursor: ne-resize;
+}
+.lb {
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+  cursor: sw-resize;
+}
+.rb {
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
+  cursor: se-resize;
+}
+
+.cover {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+.top {
+  width: 100%;
+  height: calc((100% - 150px) / 2);
+  top: 0;
+  left: 0;
+}
+.left {
+  width: calc((100% - 150px) / 2);
+  height: 150px;
+  left: 0;
+  top: calc((100% - 150px) / 2);
+}
+.right {
+  width: calc((100% - 150px) / 2);
+  height: 150px;
+  right: 0;
+  top: calc((100% - 150px) / 2);
+}
+.bottom {
+  width: 100%;
+  height: calc((100% - 150px) / 2);
+  right: 0;
+  bottom: 0;
+}
+
+@media (width > 900px) {
+  .uploadPanel {
+    z-index: 110;
+    position: fixed;
+    top: calc((100vh - 600px) / 2);
+    left: calc((100vw - 900px) / 2);
+    width: 900px;
+    height: 600px;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1),
+      -5px -5px 5px rgba(0, 0, 0, 0.1),
+      -5px 5px 5px rgba(0, 0, 0, 0.1), 5px -5px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (width > 1024px) {
+  .tabBar {
+    z-index: 11;
+    top: 6rem;
+  }
+  .navlinks {
+    justify-content: flex-end;
+  }
+
+  .navlinks a {
+    min-width: 15rem;
+    flex: unset;
+  }
+  .setting {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+  }
+
+  .sideBar {
+    display: block;
+    visibility: visible;
+    position: fixed;
+    width: 250px;
+  }
+  .sideBar a {
+    display: block;
+    border-bottom-right-radius: 10rem;
+    border-top-right-radius: 10rem;
+    overflow: hidden;
+  }
+  .sideBar a.active {
+    background: rgba(0, 0, 255, 0.158);
+  }
+  .sideBar a div,
+  .sideBar a button {
+    width: 100%;
+  }
+  .sideBar a button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.5rem 1rem 1.5rem 2rem;
+  }
+  .sideBar a svg {
+    width: 24px;
+    height: 24px;
+    fill: blue;
+    margin-right: 2rem;
+    pointer-events: none;
+  }
+  .details {
+    grid-column: 2 / 3;
+    padding: 0 5rem 5rem 5rem;
+  }
+  .logOut {
+    pointer-events: none;
+    visibility: hidden;
+  }
+}

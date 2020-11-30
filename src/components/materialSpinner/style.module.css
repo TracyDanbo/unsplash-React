@@ -1,0 +1,56 @@
+.svg {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.svg circle {
+  stroke-dasharray: 1, 251;
+  stroke-dashoffset: 0;
+  animation: loading 2s ease-in-out infinite forwards;
+}
+
+@keyframes loading {
+  0% {
+    stroke-dasharray: 1, 251;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 189, 251;
+    stroke-dashoffset: -63;
+  }
+  100% {
+    stroke-dasharray: 189, 251;
+    stroke-dashoffset: -250;
+  }
+}
+@keyframes color {
+  0% {
+    stroke: #3f88f8;
+  }
+  20% {
+    stroke: #3f88f8;
+  }
+  25% {
+    stroke: #dd413b;
+  }
+  45% {
+    stroke: #dd413b;
+  }
+  50% {
+    stroke: #f6ae2e;
+  }
+  70% {
+    stroke: #f6ae2e;
+  }
+  75% {
+    stroke: #259a5d;
+  }
+  95% {
+    stroke: #259a5d;
+  }
+}

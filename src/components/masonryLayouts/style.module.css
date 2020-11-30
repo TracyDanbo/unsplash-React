@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+
+  padding: 0;
+  justify-content: center;
+  min-height: calc(50vh - 9rem);
+}
+.column {
+  flex: 1;
+  max-width: 400px;
+  min-width: 200px;
+  margin: 0 1rem;
+}
+
+@media (450px < width <=740px) {
+  .container {
+    justify-content: center;
+  }
+  .column {
+    max-width: 400px;
+  }
+}
+
+@media (width > 1024px) {
+  .column {
+    max-width: 400px;
+  }
+}

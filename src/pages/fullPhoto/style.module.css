@@ -1,0 +1,245 @@
+.fullPhoto {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  overflow-y: hidden;
+}
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.clear,
+.showInfo {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  user-select: none;
+}
+.clear:hover,
+.showInfo:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.clear svg,
+.showInfo svg {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+.clear {
+  top: 0;
+  left: 0;
+}
+.showInfo {
+  top: 0;
+  right: 0;
+}
+.clear.switch {
+  visibility: hidden;
+}
+.showInfo.switch svg {
+  fill: black;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.info {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  top: 0;
+  left: 0;
+  background: white;
+  padding: 7rem 1rem 1rem 1rem;
+  transform: translateY(150%);
+  transition: all 0.3s ease-in-out;
+}
+
+.info.show {
+  transform: translateY(0);
+}
+
+.infoList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.infoList li {
+  display: flex;
+  align-items: center;
+  padding: 2rem 1rem;
+  font-size: 1.6rem;
+}
+
+.infoList div {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoList span:nth-child(1) {
+  font-size: 1.3rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.infoList svg {
+  fill: rgba(0, 0, 0, 0.9);
+  width: 32px;
+  height: 32px;
+  margin-right: 1rem;
+}
+
+.infoList p {
+  display: flex;
+  align-items: center;
+}
+
+.colorBlock {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.tags li {
+  font-size: 1.6rem;
+  /* padding: 1rem; */
+  margin: 0.5rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+}
+
+.tags a {
+  display: inline-block;
+  padding: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+.tags a:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+@media (width > 450px) {
+  .fullPhoto {
+    display: flex;
+    overflow-x: hidden;
+  }
+  .info {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    position: static;
+    /* transform: translateY(0); */
+    transform: translate(150%, 0);
+    background: inherit;
+    /* animation: hide 0.6s ease-in-out forwards; */
+    transition: transform 0.3s ease-in-out,
+      width 0.3s ease-in-out 0.3s, padding 0.3s ease-in-out 0.3s;
+  }
+
+  .info.show {
+    width: 550px;
+    padding: 7rem 1rem 1rem 1rem;
+    transform: translateX(0) translateY(0);
+    /* animation: show 0.6s ease-in-out forwards; */
+    transition: transform 0.3s ease-in-out 0.3s,
+      width 0.3s ease-in-out, padding 0.3s ease-in-out;
+  }
+
+  /* @keyframes show {
+    0% {
+      width: 0;
+      padding-left: 0;
+      padding-right: 0;
+      transform: translate(150%, 0);
+    }
+    50% {
+      width: 550px;
+      padding: 7rem 1rem 1rem 1rem;
+      transform: translate(150%, 0);
+    }
+    100% {
+      width: 550px;
+      padding: 7rem 1rem 1rem 1rem;
+      transform: translateX(0) translateY(0);
+    }
+  }
+
+  @keyframes hide {
+    0% {
+      width: 550px;
+      padding: 7rem 1rem 1rem 1rem;
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      width: 550px;
+      padding: 7rem 1rem 1rem 1rem;
+      transform: translate(150%, 0);
+    }
+
+    100% {
+      width: 0;
+      padding-left: 0;
+      padding-right: 0;
+      transform: translate(150%, 0);
+    }
+  } */
+  .infoList span {
+    color: white;
+  }
+
+  .infoList span:nth-child(1) {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .infoList svg {
+    fill: white;
+  }
+
+  .tags li {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .tags a {
+    color: white;
+  }
+
+  .showInfo.switch svg {
+    fill: white;
+  }
+  .clear.switch {
+    visibility: visible;
+  }
+}
+@media (width > 1024px) {
+  .fullPhoto {
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
