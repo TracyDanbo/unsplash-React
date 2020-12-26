@@ -75,8 +75,8 @@ function SignUp(props) {
     setIsLoging(true);
     dispatch(actions.signUp(email, password));
   };
-  const onChanegLanguage = ({ language }) => {
-    if (language === 'English') {
+  const onChanegLanguage = (language) => {
+    if (Object.values(language)[0] === 'English') {
       i18n.changeLanguage('en');
     } else {
       i18n.changeLanguage('cn');
@@ -139,7 +139,8 @@ function SignUp(props) {
       <TextSelect
         options={['中文']}
         defaultValue="English"
-        label="Language"
+        label={t('language')}
+        value={t('currentLanguage')}
         className={styles.language}
         onChange={onChanegLanguage}
       />

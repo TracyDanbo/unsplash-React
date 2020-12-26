@@ -54,8 +54,8 @@ function Login(props) {
       passwordRef.current.removeAttribute('disabled');
     }
   };
-  const onChanegLanguage = ({ language }) => {
-    if (language === 'English') {
+  const onChanegLanguage = (language) => {
+    if (Object.values(language)[0] === 'English') {
       i18n.changeLanguage('en');
     } else {
       i18n.changeLanguage('cn');
@@ -110,9 +110,10 @@ function Login(props) {
       </div>
 
       <TextSelect
-        label="Language"
+        label={t('language')}
         options={['中文']}
         defaultValue="English"
+        value={t('currentLanguage')}
         className={styles.language}
         onChange={onChanegLanguage}
       />

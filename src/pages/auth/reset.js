@@ -26,13 +26,14 @@ function Reset(props) {
       history.replace('/auth/login');
     }, 5000);
   };
-  const onChanegLanguage = ({ language }) => {
-    if (language === 'English') {
+  const onChanegLanguage = (language) => {
+    if (Object.values(language)[0] === 'English') {
       i18n.changeLanguage('en');
     } else {
       i18n.changeLanguage('cn');
     }
   };
+  console.log(i18n.getDataByLanguage('cn'));
   return (
     <>
       <div className={styles.reset}>
@@ -59,7 +60,8 @@ function Reset(props) {
       <TextSelect
         options={['中文']}
         defaultValue="English"
-        label="Language"
+        label={t('language')}
+        value={t('currentLanguage')}
         className={styles.language}
         onChange={onChanegLanguage}
       />
