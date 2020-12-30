@@ -148,9 +148,9 @@
   position: absolute;
   font-size: 1.6rem;
   color: #707070;
-  left: -100%;
   padding: 0.5rem;
   transform-origin: left;
+  transform: translateX(-120%);
   transition: all 0.3s ease-in-out;
 }
 
@@ -158,6 +158,7 @@
 .label.standardSelect {
   left: 0;
   top: 2.3rem;
+  transform: translateX(0);
 }
 
 .label.outlined,
@@ -165,6 +166,7 @@
   top: 1.3rem;
   left: 1.3rem;
   background: white;
+  transform: translateX(0);
 }
 
 .input:focus ~ .label.outlined,
