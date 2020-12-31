@@ -149,6 +149,7 @@
   font-size: 1.6rem;
   color: #707070;
   padding: 0.5rem;
+  line-height: 2rem;
   transform-origin: left;
   transform: translateX(-120%);
   transition: all 0.3s ease-in-out;
