@@ -16,7 +16,7 @@ function Profile(props) {
     onCancelUpdateProfile,
     openUploadPanel,
   } = props;
-  const { t, i18n } = useTranslation('auth');
+  const { t, i18n } = useTranslation(['auth', 'account']);
   const onChanegLanguage = (language) => {
     if (Object.values(language)[0] === 'English') {
       i18n.changeLanguage('en');
@@ -46,7 +46,7 @@ function Profile(props) {
       id="profile"
       className={[styles.snippet, styles.profile].join(' ')}
     >
-      <h1>{t('profile')}</h1>
+      <h1>{t('account:profile')}</h1>
       <div className={[styles.container, styles.profile].join(' ')}>
         <div className={styles.row} onClick={openUploadPanel}>
           <CameraIcon />
@@ -73,7 +73,7 @@ function Profile(props) {
               type="text"
               value={name}
               onChange={onChangeName}
-              placeholder="Enter your Name"
+              placeholder={t('account:edit')}
             />
 
             <div className={styles.done}>

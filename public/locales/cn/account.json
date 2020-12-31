@@ -4,6 +4,7 @@
   "email": "邮箱",
   "password": "密码",
   "name": "用户名",
+  "edit": "新用户名",
   "current": "当前密码",
   "new": "新的密码",
   "comfirm": "确认密码",
