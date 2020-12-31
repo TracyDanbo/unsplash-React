@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 // import { useSticky } from '../../Hook';
 import Search from '../searchBar';
@@ -10,6 +11,7 @@ import styles from './style.module.css';
 
 function Header(props) {
   const { isLogin, avatar, children, className, style } = props;
+  const { t } = useTranslation('nav');
   const container = useRef();
   const navlinks = useRef();
   // useSticky(
@@ -57,13 +59,13 @@ function Header(props) {
         </div>
         <div className={styles.navlinks} ref={navlinks}>
           <NavLink to="/" exact activeClassName={styles.active}>
-            Home
+            {t('home')}
           </NavLink>
           <NavLink to="/photos" activeClassName={styles.active}>
-            Photo
+            {t('photo')}
           </NavLink>
           <NavLink to="/Collections" activeClassName={styles.active}>
-            Collection
+            {t('collection')}
           </NavLink>
         </div>
         <Search className={styles.search} />

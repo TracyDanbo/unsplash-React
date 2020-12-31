@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import styles from './style.module.css';
 import { ReactComponent as SearchIcon } from '../../assets/images/search-white-18dp.svg';
 
 function Search(props) {
   const { className } = props;
+  const { t } = useTranslation('nav');
   const [query, setQuery] = useState('');
   const history = useHistory();
   const onChangeHandle = (event) => {
@@ -25,7 +27,7 @@ function Search(props) {
           type="text"
           value={query}
           onChange={onChangeHandle}
-          placeholder="Search..."
+          placeholder={t('search')}
         />
       </label>
     </form>

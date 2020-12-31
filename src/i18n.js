@@ -7,7 +7,7 @@ i18n
   .use(initReactI18next)
   .init({
     debug: process.env !== 'production',
-    lng: 'en',
+    lng: localStorage.getItem('language') || 'en',
     fallbackLng: 'en',
     whitelist: ['en', 'cn'],
     interpolation: {

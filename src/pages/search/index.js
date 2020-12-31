@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Route, NavLink, useRouteMatch } from 'react-router-dom';
 import * as actions from '../../actions';
 import Photos from './photos';
@@ -12,6 +13,7 @@ import { ReactComponent as PhotoIcon } from '../../assets/images/insert_photo-wh
 import { ReactComponent as CollectionIcon } from '../../assets/images/layers-white-18dp.svg';
 import { ReactComponent as UsersIcon } from '../../assets/images/group-black-18dp.svg';
 function Search(props) {
+  const { t } = useTranslation('search');
   const tapBar = useRef();
   const {
     params: { query },
@@ -102,17 +104,21 @@ function Search(props) {
         <Route path="/search/photos/:query">
           <div className={styles.filter}>
             <StandardSelect
-              options={orientation}
-              label="Orientation"
+              options={orientation.map((item) => t(item))}
+              optionValues={orientation}
+              label={t('orientation')}
+              labelText={'orientation'}
               color="orange"
-              value={filter.orientation ? filter.orientation : ''}
+              value={filter.orientation ? t(filter.orientation) : ''}
               onChange={updateFilter}
             />
             <StandardSelect
-              options={color}
-              label="Color"
+              options={color.map((item) => t(item))}
+              label={t('color')}
+              labelText={'color'}
               color="orange"
-              value={filter.color ? filter.color : ''}
+              value={filter.color ? t(filter.color) : ''}
+              optionValues={color}
               onChange={updateFilter}
             />
           </div>

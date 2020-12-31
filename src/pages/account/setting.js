@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import validator from 'validator';
+import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ContainedButton } from '../../components/materialButton';
@@ -11,6 +12,7 @@ import * as actions from '../../actions';
 import styles from './style.module.css';
 
 function Setting(props) {
+  const { t } = useTranslation('account');
   const [errorMessage, setErrorMessage] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const currentRef = useRef();
@@ -49,42 +51,49 @@ function Setting(props) {
 
     setErrorMessage('');
     if (validator.equals(current, newPassword)) {
-      setErrorMessage(
-        'the new password and the current password could not be the same',
-      );
+      // setErrorMessage(
+      //   'the new password and the current password could not be the same',
+      // );
+      setErrorMessage(t('nocomfirm'));
       return;
     }
     if (!validator.equals(newPassword, confirm)) {
-      setErrorMessage('Please confirm your password!');
+      // setErrorMessage('Please confirm your password!');
+      setErrorMessage(t('nocomfirm'));
       return;
     }
 
     if (!validator.isLength(newPassword, { min: 8 })) {
-      setErrorMessage('password should be  at least 8 characters');
+      // setErrorMessage('password should be  at least 8 characters');
+      setErrorMessage(t('atleast'));
       return;
     }
     if (validator.isVariableWidth(newPassword)) {
-      setErrorMessage(
-        'password should be only contain half-width characters',
-      );
+      // setErrorMessage(
+      //   'password should be only contain half-width characters',
+      // );
+      setErrorMessage(t('halfwidth'));
       return;
     }
     if (validator.isNumeric(newPassword)) {
-      setErrorMessage(
-        'Use 8 or more characters with a mix of letters, numbers & symbols',
-      );
+      // setErrorMessage(
+      //   'Use 8 or more characters with a mix of letters, numbers & symbols',
+      // );
+      setErrorMessage(t('helperText'));
       return;
     }
     if (!validator.matches(newPassword, '[0-9]')) {
-      setErrorMessage(
-        'Use 8 or more characters with a mix of letters, numbers & symbols',
-      );
+      // setErrorMessage(
+      //   'Use 8 or more characters with a mix of letters, numbers & symbols',
+      // );
+      setErrorMessage(t('helperText'));
       return;
     }
     if (!validator.isAscii(newPassword)) {
-      setErrorMessage(
-        'the password can only contain Ascii characters',
-      );
+      // setErrorMessage(
+      //   'the password can only contain Ascii characters',
+      // );
+      setErrorMessage(t('ascii'));
       return;
     }
 
@@ -148,7 +157,7 @@ function Setting(props) {
         <div className={styles.logOut}>
           <Link to="/photos" onClick={onLogout}>
             <ContainedButton color="blue" ripple={false}>
-              Logout
+              {t('logout')}
             </ContainedButton>
           </Link>
         </div>

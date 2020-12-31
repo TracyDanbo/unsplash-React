@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { TextSelect } from '../../components/materialTextField';
 import { ReactComponent as CancelIcon } from '../../assets/images/clear-white-18dp.svg';
 import { ReactComponent as DoneIcon } from '../../assets/images/done-black-18dp.svg';
 import { ReactComponent as EditIcon } from '../../assets/images/create-black-18dp.svg';
@@ -14,6 +16,16 @@ function Profile(props) {
     onCancelUpdateProfile,
     openUploadPanel,
   } = props;
+  const { t, i18n } = useTranslation('auth');
+  const onChanegLanguage = (language) => {
+    if (Object.values(language)[0] === 'English') {
+      i18n.changeLanguage('en');
+      localStorage.setItem('language', 'en');
+    } else {
+      i18n.changeLanguage('cn');
+      localStorage.setItem('language', 'cn');
+    }
+  };
   const editRef = useRef();
   const onEdit = (e) => {
     editRef.current.classList.add(styles.open);
@@ -34,7 +46,7 @@ function Profile(props) {
       id="profile"
       className={[styles.snippet, styles.profile].join(' ')}
     >
-      <h1>Profile</h1>
+      <h1>{t('profile')}</h1>
       <div className={[styles.container, styles.profile].join(' ')}>
         <div className={styles.row} onClick={openUploadPanel}>
           <CameraIcon />
@@ -45,11 +57,11 @@ function Profile(props) {
           />
         </div>
         <div className={styles.row}>
-          <span className={styles.filed}>Email:</span>
+          <span className={styles.filed}>{t('email')}:</span>
           <span className={styles.value}>{auth.email}</span>
         </div>
         <div className={styles.row}>
-          <span className={styles.filed}>User Name:</span>
+          <span className={styles.filed}>{t('name')}:</span>
           <div className={styles.edit}>
             <EditIcon onClick={onEdit} />
           </div>
@@ -71,6 +83,17 @@ function Profile(props) {
               <CancelIcon onClick={onCancelUpdate} />
             </div>
           </label>
+        </div>
+        <div className={styles.row}>
+          <span className={styles.filed}>{t('language')}:</span>
+          <TextSelect
+            labelText="language"
+            options={['中文']}
+            defaultValue="English"
+            value={t('currentLanguage')}
+            className={styles.language}
+            onChange={onChanegLanguage}
+          />
         </div>
       </div>
     </div>

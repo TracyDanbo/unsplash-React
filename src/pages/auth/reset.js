@@ -29,8 +29,10 @@ function Reset(props) {
   const onChanegLanguage = (language) => {
     if (Object.values(language)[0] === 'English') {
       i18n.changeLanguage('en');
+      localStorage.setItem('language', 'en');
     } else {
       i18n.changeLanguage('cn');
+      localStorage.setItem('language', 'cn');
     }
   };
   console.log(i18n.getDataByLanguage('cn'));

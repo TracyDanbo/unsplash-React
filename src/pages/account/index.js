@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Likes from './likes';
 import Setting from './setting';
 import { ReactComponent as LikeIcon } from '../../assets/images/favorite_border-white-18dp.svg';
@@ -7,6 +8,7 @@ import { ReactComponent as SettingIcon } from '../../assets/images/settings-blac
 import styles from './style.module.css';
 
 function Account(props) {
+  const { t } = useTranslation('account');
   return (
     <>
       <div className={styles.tabBar}>
@@ -16,14 +18,14 @@ function Account(props) {
             activeClassName={styles.active}
           >
             <LikeIcon />
-            Likes
+            {t('like')}
           </NavLink>
           <NavLink
             to={`/account/setting#profile`}
             activeClassName={styles.active}
           >
             <SettingIcon />
-            Setting
+            {t('setting')}
           </NavLink>
         </div>
       </div>

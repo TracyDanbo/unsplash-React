@@ -195,6 +195,15 @@
 .edit {
   margin: 0 1.5rem 0 auto;
 }
+.edit svg {
+  cursor: pointer;
+}
+
+.language input {
+  width: 70px;
+  cursor: pointer;
+}
+
 /* security */
 .security {
   padding: 0 1rem 1rem 1rem;

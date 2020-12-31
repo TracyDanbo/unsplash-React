@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useLocation, useHistory } from 'react-router-dom';
 import LoadingDot from '../../components/loadingDot';
 import { StandardTextField } from '../../components/materialTextField';
@@ -19,6 +20,7 @@ function Security(props) {
     passwordHash,
     cleanHash,
   } = props;
+  const { t } = useTranslation('account');
   const blockRef = useRef();
   const location = useLocation();
   const history = useHistory();
@@ -42,7 +44,7 @@ function Security(props) {
   });
   return (
     <div id="security" className={styles.snippet} ref={blockRef}>
-      <h1>Change Password</h1>
+      <h1>{t('change')}</h1>
       {errorMessage ? <Alert text={errorMessage} /> : null}
       {!changingPassword && !passwordHash ? (
         <div
@@ -50,26 +52,26 @@ function Security(props) {
         >
           <StandardTextField
             type="password"
-            label="Current Password"
+            label={t('current')}
             color="blue"
             ref={currentRef}
           />
           <StandardTextField
             ref={newRef}
             type="password"
-            label="New Password"
+            label={t('new')}
             color="blue"
-            helperText="Use 8 or more characters with a mix of letters, numbers & symbols"
+            helperText={t('helperText')}
           />
           <StandardTextField
             type="password"
-            label="Comfirm Password"
+            label={t('comfirm')}
             color="blue"
             ref={confirmRef}
           />
           <div className={styles.commit}>
             <ContainedButton
-              text="Change Password"
+              text={t('change')}
               color="blue"
               onClick={onChangePassword}
             />
@@ -77,12 +79,12 @@ function Security(props) {
         </div>
       ) : changingPassword && !passwordHash ? (
         <div className={styles.waiting}>
-          <p>Changing Password...</p>
+          <p>{t('updating')}</p>
           <LoadingDot size={32} />
         </div>
       ) : (
         <div className={styles.waiting}>
-          <p>Password has updated!</p>
+          <p>{t('updated')}</p>
           <ContainedButton
             text="Confirm"
             color="blue"

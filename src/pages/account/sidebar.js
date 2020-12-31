@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { NavHashLink } from 'react-router-hash-link';
 import { TextButton } from '../../components/materialButton';
 import { ReactComponent as SecurityIcon } from '../../assets/images/https-black-18dp.svg';
@@ -8,6 +9,7 @@ import { ReactComponent as ExitIcon } from '../../assets/images/exit_to_app-blac
 import styles from './style.module.css';
 function SideBar(props) {
   const { logout } = props;
+  const { t } = useTranslation('account');
   return (
     <div className={styles.sideBar}>
       <NavHashLink
@@ -33,7 +35,7 @@ function SideBar(props) {
       >
         <TextButton color="blue">
           <ProfileIcon />
-          Profile
+          {t('profile')}
         </TextButton>
       </NavHashLink>
 
@@ -53,13 +55,13 @@ function SideBar(props) {
       >
         <TextButton color="blue">
           <SecurityIcon />
-          Change Password
+          {t('change')}
         </TextButton>
       </NavHashLink>
       <Link to="/photos" onClick={logout}>
         <TextButton color="blue" ripple={false}>
           <ExitIcon />
-          Logout
+          {t('logout')}
         </TextButton>
       </Link>
     </div>

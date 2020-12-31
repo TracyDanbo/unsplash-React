@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   ContainedButton,
   TextButton,
@@ -10,6 +11,7 @@ import styles from './style.module.css';
 
 function Upload(props) {
   const { setIsOpen, uploadImage, deletehash, cleanImgur } = props;
+  const { t } = useTranslation('account');
   const inputRef = useRef();
   const [isUploading, setIsUploading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
@@ -76,7 +78,7 @@ function Upload(props) {
     <div className={styles.uploadPanel}>
       <h1>
         {isSelected ? <BackIcon onClick={reSelect} /> : null}
-        <span>Choose your profile photo</span>
+        <span>{t('profilePhoto')}</span>
       </h1>
       <div className={styles.previewBox}>
         {!isSelected ? (
@@ -89,7 +91,7 @@ function Upload(props) {
                 className={styles.input}
                 onChange={getfile}
               />
-              Choose Photo
+              {t('choose')}
             </ContainedButton>
           </div>
         ) : imgFile && !isUploading ? (
@@ -117,13 +119,13 @@ function Upload(props) {
         {!isUploading ? (
           <>
             <TextButton
-              text="Upload Photo"
+              text={t('upload')}
               color="blue"
               onClick={UploadFile}
               ripple={false}
             />
             <TextButton
-              text="Cancel"
+              text={t('cancel')}
               color="gray"
               onClick={cancel}
               ripple={false}

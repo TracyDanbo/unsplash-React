@@ -9,6 +9,7 @@ const TextField = React.forwardRef((props, ref) => {
     style,
     type,
     label,
+    labelText,
     color,
     errorColor,
     withLine,
@@ -18,6 +19,7 @@ const TextField = React.forwardRef((props, ref) => {
     rAdornment,
     defaultValue,
     options,
+    optionValues,
     onBlur,
     onFocus,
     onChange,
@@ -71,7 +73,7 @@ const TextField = React.forwardRef((props, ref) => {
       const { bottom } = inputRef.current.getBoundingClientRect();
       if (window.innerHeight - bottom <= 280) {
         optionsRef.current.style.top = ` -${
-          (options.length + 1) * 100
+          (options.length + 2) * 100
         }%`;
       } else {
         optionsRef.current.style.removeProperty('top');
@@ -80,11 +82,13 @@ const TextField = React.forwardRef((props, ref) => {
     inputRef.current.focus();
 
     if (options && event.target.tagName.toLowerCase() === 'li') {
+      const option = event.target.dataset.option;
       inputRef.current.value = event.target.textContent;
       optionsRef.current.classList.remove(styles.open);
       onChange &&
         onChange({
-          [label.toLowerCase()]: inputRef.current.value,
+          [labelText ? labelText.toLowerCase() : label.toLowerCase()]:
+            option || inputRef.current.value,
         });
     }
     onMouseDown && onMouseDown();
@@ -158,9 +162,15 @@ const TextField = React.forwardRef((props, ref) => {
             {defaultValue ? defaultValue : ''}
           </li>
           {options
-            ? options.map((item) => {
+            ? options.map((item, index) => {
                 return (
-                  <li key={item} className={styles.item}>
+                  <li
+                    key={item}
+                    className={styles.item}
+                    data-option={
+                      optionValues ? optionValues[index] : null
+                    }
+                  >
                     {item}
                   </li>
                 );
@@ -178,6 +188,7 @@ TextField.propTypes = {
   style: PropTypes.string,
   type: PropTypes.string,
   label: PropTypes.string,
+  labelText: PropTypes.string,
   color: PropTypes.string,
   errorColor: PropTypes.string,
   withLine: PropTypes.bool,
@@ -187,6 +198,7 @@ TextField.propTypes = {
   rAdornment: PropTypes.node,
   defaultValue: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.string),
+  optionValues: PropTypes.arrayOf(PropTypes.string),
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   onChange: PropTypes.func,
