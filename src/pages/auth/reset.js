@@ -61,6 +61,7 @@ function Reset(props) {
       </div>
       <TextSelect
         options={['中文']}
+        optionPosition="top"
         defaultValue="English"
         label={t('language')}
         value={t('currentLanguage')}

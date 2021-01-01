@@ -114,6 +114,7 @@ function Login(props) {
       <TextSelect
         label={t('language')}
         options={['中文']}
+        optionPosition="top"
         defaultValue="English"
         value={t('currentLanguage')}
         className={styles.language}

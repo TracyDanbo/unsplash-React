@@ -178,6 +178,7 @@ export function FilledSelect(props) {
 FilledSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string),
   optionValues: PropTypes.arrayOf(PropTypes.string),
+  optionPosition: PropTypes.string,
   label: PropTypes.string,
   labetText: PropTypes.string,
   defaultValue: PropTypes.string,
@@ -206,6 +207,7 @@ export function OutlinedSelect(props) {
 OutlinedSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string),
   optionValues: PropTypes.arrayOf(PropTypes.string),
+  optionPosition: PropTypes.string,
   label: PropTypes.string,
   labetText: PropTypes.string,
   defaultValue: PropTypes.string,
@@ -231,6 +233,7 @@ export function StandardSelect(props) {
 StandardSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string),
   optionValues: PropTypes.arrayOf(PropTypes.string),
+  optionPosition: PropTypes.string,
   label: PropTypes.string,
   labetText: PropTypes.string,
   defaultValue: PropTypes.string,

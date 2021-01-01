@@ -89,6 +89,7 @@ function Profile(props) {
           <TextSelect
             labelText="language"
             options={['中文']}
+            optionPosition={'top'}
             defaultValue="English"
             value={t('currentLanguage')}
             className={styles.language}

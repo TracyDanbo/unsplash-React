@@ -20,6 +20,7 @@ const TextField = React.forwardRef((props, ref) => {
     defaultValue,
     options,
     optionValues,
+    optionPosition,
     onBlur,
     onFocus,
     onChange,
@@ -70,13 +71,12 @@ const TextField = React.forwardRef((props, ref) => {
   const onMouseDownHandle = (event) => {
     if (options) {
       optionsRef.current.classList.add(styles.open);
-      const { bottom } = inputRef.current.getBoundingClientRect();
-      if (window.innerHeight - bottom <= 280) {
-        optionsRef.current.style.top = ` -${
-          (options.length + 2) * 100
-        }%`;
-      } else {
-        optionsRef.current.style.removeProperty('top');
+      const { height } = inputRef.current.getBoundingClientRect();
+      const offset = height + 10;
+      if (optionPosition === 'top') {
+        optionsRef.current.style.transform = `translateY(calc(-100% - ${offset}px))`;
+      } else if (optionPosition === 'bottom' || !optionPosition) {
+        optionsRef.current.style.transform = 'translateY(0%)';
       }
     }
     inputRef.current.focus();
@@ -199,6 +199,7 @@ TextField.propTypes = {
   defaultValue: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.string),
   optionValues: PropTypes.arrayOf(PropTypes.string),
+  optionPosition: PropTypes.string,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   onChange: PropTypes.func,
