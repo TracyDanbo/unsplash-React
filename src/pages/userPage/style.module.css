@@ -31,7 +31,8 @@
 .navlinks {
   z-index: 10;
   position: sticky;
-  top: 9rem;
+  /* top: 9rem; */
+  top: calc(9rem - 1px);
   background: white;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;

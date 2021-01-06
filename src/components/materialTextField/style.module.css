@@ -228,7 +228,7 @@
 }
 
 .options.open {
-  width: max-content;
+  /* width: max-content; */
   height: fit-content;
   overflow: auto;
   max-height: 250px;

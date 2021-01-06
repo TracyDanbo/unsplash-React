@@ -35,11 +35,20 @@ function App() {
         />
         <Route path="/account/likes/:photoId" component={FullPhoto} />
         <Route path="/photos/:photoId" component={FullPhoto} />
+        <Route
+          path="/users/:username/photos/:photoId"
+          component={FullPhoto}
+        />
+        <Route
+          path="/users/:username/likes/:photoId"
+          component={FullPhoto}
+        />
       </Switch>
       <Switch>
         <Route path="/photos" component={Photos} />
         <Route path="/collections" component={Collections} />
         <Route path="/users/:username" component={UserPage} />
+
         <Route
           path="/collection/:collectionId"
           component={CollectionPage}

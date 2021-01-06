@@ -28,55 +28,70 @@ function UserPage(props) {
     dispatch(actions.getUserLikes(username, 1, 15));
   }, [dispatch, username]);
   return (
-    <Suspense fallback={<MaterialSpinner color="orange" />}>
-      <div className={styles.userPage}>
-        {/* <User /> */}
-        {!data ? (
-          <div className={styles.box}></div>
-        ) : (
-          <>
-            <div className={styles.box}>
-              <img src={data.profile_image.large} alt="profile" />
-              <div className={styles.detail}>
-                <p>{data.name}</p>
-                <p>{data.bio}</p>
-              </div>
+    <div className={styles.userPage}>
+      {/* <User /> */}
+      {!data ? (
+        <div className={styles.box}></div>
+      ) : (
+        <>
+          <div className={styles.box}>
+            <img src={data.profile_image.large} alt="profile" />
+            <div className={styles.detail}>
+              <p>{data.name}</p>
+              <p>{data.bio}</p>
             </div>
+          </div>
 
-            <div className={styles.navlinks}>
-              <NavLink
-                to={`/users/${username}/photos`}
-                activeClassName={styles.active}
-              >
-                <PhotoIcon />
-                {data.total_photos}
-              </NavLink>
+          <div className={styles.navlinks}>
+            <NavLink
+              to={`/users/${username}/photos`}
+              activeClassName={styles.active}
+            >
+              <PhotoIcon />
+              {data.total_photos}
+            </NavLink>
 
-              <NavLink
-                to={`/users/${username}/collections`}
-                activeClassName={styles.active}
-              >
-                <CollectionIcon />
-                {data.total_collections}
-              </NavLink>
-              <NavLink
-                to={`/users/${username}/likes`}
-                activeClassName={styles.active}
-              >
-                <LikeIcon />
-                {data.total_likes}
-              </NavLink>
-            </div>
-          </>
-        )}
+            <NavLink
+              to={`/users/${username}/collections`}
+              activeClassName={styles.active}
+            >
+              <CollectionIcon />
+              {data.total_collections}
+            </NavLink>
+            <NavLink
+              to={`/users/${username}/likes`}
+              activeClassName={styles.active}
+            >
+              <LikeIcon />
+              {data.total_likes}
+            </NavLink>
+          </div>
+        </>
+      )}
+      <Suspense
+        fallback={
+          <MaterialSpinner
+            color="orange"
+            size={
+              window.innerWidth * 0.1 > 80
+                ? 80
+                : window.innerWidth * 0.1
+            }
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          />
+        }
+      >
         <Route path="/users/:username/photos" component={Photos} />
         <Route
           path="/users/:username/collections"
           component={Collections}
         />
         <Route path="/users/:username/likes" component={Likes} />
-      </div>
-    </Suspense>
+      </Suspense>
+    </div>
   );
 }
 
